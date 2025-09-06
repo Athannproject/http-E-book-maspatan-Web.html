@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-book maspatan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .book-card {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .book-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-lg p-4">
+        <h1 class="text-center text-3xl font-bold text-teal-500">E-book maspatan</h1>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-4">
+        <!-- Beranda -->
+        <div id="home" class="page active">
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Selamat Datang di E-book maspatan</h2>
+                <p class="text-gray-600 mb-6">Temukan e-book favorit Anda dengan klik mudah.</p>
+            </section>
+
+            <section id="books" class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="book-card bg-white p-4 rounded shadow" onclick="showBook('Menyingkap pesona pulau Bawean')">
+                    <img src="book bawean.jpg" alt="Sampul buku tentang pulau Bawean, ilustrasi Pulau Bawean dengan keindahan alamnya" class="w-full rounded mb-2" onerror="this.style.display='none';" />
+                    <h4 class="font-bold">Menyingkap pesona pulau Bawean</h4>
+                    <p>Penulis: Achmad maulana, dkk</p>
+                    <p class="text-green-600 font-bold">Rp 10.000</p>
+                </div>
+                <div class="book-card bg-white p-4 rounded shadow" onclick="showBook('Buku perjuangan')">
+                    <img src="buku perjuangan.jpg" alt="Sampul buku kisah tentang perjuangan pahlawan dwikora" class="w-full rounded mb-2" onerror="this.style.display='none';" />
+                    <h4 class="font-bold">Buku Usman Janatin dan Harun Tohir Kisah Perjuangan Pahlawan Dwikora</h4>
+                    <p>Penulis: Arif saefudin</p>
+                    <p class="text-green-600 font-bold">Rp 71.000</p>
+                </div>
+                <div class="book-card bg-white p-4 rounded shadow" onclick="showBook('MDPL')">
+                    <img src="Mdpl.jpg" alt="Sampul buku tentang pendaki seorang yang bawa tas untuk mendaki" class="w-full rounded mb-2" onerror="this.style.display='none';" />
+                    <h4 class="font-bold">Buku 3276 MDPL</h4>
+                    <p>Karya : Nurwina sari</p>
+                    <p class="text-green-600 font-bold">Rp 40.000</p>
+                </div>
+                <div class="book-card bg-white p-4 rounded shadow" onclick="showBook('Sebuah cerita')">
+                    <img src="Cerita.jpg" alt="sampul buku tentang aku dalam sebuah cerita" class="w-full rounded mb-2" onerror="this.style.display='none';" />
+                    <h4 class="font-bold">Buku Aku dalam Sebuah Cerita</h4>
+                    <p>Penulis: Sunarti lewang</p>
+                    <p class="text-green-600 font-bold">Rp 25.000</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Halaman Deskripsi Buku -->
+        <div id="book-detail" class="page">
+            <div class="flex items-center mb-4">
+                <button onclick="showPage('home')" class="bg-blue-500 text-white px-4 py-2 rounded mr-4">Kembali ke Beranda</button>
+            </div>
+            <div id="book-content" class="max-w-4xl mx-auto">
+                <!-- Konten buku akan diisi oleh JS -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-4 mt-8 text-center">
+        <p>© 2025 E-book patan</p>
+    </footer>
+
+    <script>
+        const books = {
+            'Menyingkap pesona pulau Bawean': {
+                title: 'Menyingkap pesona pulau Bawean',
+                author: 'Achmad maulana, dkk',
+                price: 'Rp 10.000',
+                description: 'Buku “Menyingkap Pesona Pulau Bawean” ini awalnya merupakan laporan pertanggungjawaban perjalanan kegiatan SHARE kita Karana yang dilakukan pada Agustus 2019 dan telah dipresentasikan di hadapan pengurus dan anggota aktif KPA Arkadia pada September tahun yang sama. Kemudian, karya ini disusun ulang agar dapat menjadi karya akademik yang reader friendly sehingga dapat dibaca lebih luas oleh khalayak umum, terutama masyarakat yang tertarik dengan Pulau Bawean. Harapannya karya ini dapat menjadi inspirasi bagi anggota KPA Arkadia lainnya, Mapala lain, maupun pihak lain yang ingin mengembangkan konsep sejenis, terutama dalam kaitannya dengan implementasi Merdeka Belajar – Kampus Merdeka (MBKM). Selain itu, juga dapat bermanfaat bagi Pemerintah Daerah setempat di pulau Bawean atau pembaca yang ingin berkunjung.',
+                image: 'book bawean.jpg',
+                alt: 'Sampul buku tentang pulau Bawean, ilustrasi Pulau Bawean dengan keindahan alamnya'
+            },
+            'Buku perjuangan': {
+                title: 'Buku Usman Janatin dan Harun Tohir Kisah Perjuangan Pahlawan Dwikora',
+                author: 'Arif saefudin',
+                price: 'Rp 71.000',
+                description: 'Buku ini merupakan salah satu buku yang membahas perjuangan kedua prajurit KKO-AL. Namanya sempat tenggelam beberapa dekade. Tulisan mengenai mereka juga sangat jarang diperhatikan oleh sejarawan. Berlandas semangat itu, buku ini hadir untuk melengkapi dan menambah referensi mengenai perjuangan Pahlawan Nasional Dwikora.',
+                image: 'buku perjuangan.jpg',
+                alt: 'Sampul buku kisah tentang perjuangan pahlawan dwikora'
+            },
+            'MDPL': {
+                title: 'Buku 3726 MDPL',
+                author: 'Nurwina sari',
+                price: 'Rp 40.000',
+                description: 'Sinopsis Selain disibukkan dengan skripsi, Rangga, Ketua Panitia OSPEK Fakultas Kehutanan 2023 itu juga menyibukkan dirinya dengan mengagumi Andini. Seorang mahasiswi yang bercita-cita bisa mendaki Gunung Rinjani, sekaligus adik tingkat yang ia sebut sebagai manusia favorit. Andini dikelilingi oleh banyak cinta, banyak manusia yang ingin dengannya, terutama Rangga dengan seluruh kesan istimewanya. Namun, dalam dirinya, ada manusia dulu yang entah masih jadi pemenang atau definisi lain dari itu.',
+                image: 'Mdpl.jpg',
+                alt: 'Sampul buku tentang pendaki seorang yang bawa tas untuk mendaki'
+            },
+            'Sebuah cerita': {
+                title: 'Buku Aku dalam Sebuah Cerita',
+                author: 'Sunarti lewang',
+                price: 'Rp 25.000',
+                description: 'Buku ini sekedar menggambarkan permasalahan yang sering terjadi dalam sebuah rumah tangga, dan mengajak setiap pasangan suami istri untuk dapat lebih mengenal permasalahan keluarga, serta saling mengingatkan kembali akan hak dan kewajiban masing-masing pihak. Sedikit harapan, semoga buku ini dapat membantu pasangan suami istri dalam membina dan memperbaiki hubungan suami istri, sehingga mampu mengatasi setiap persoalan dan konflik dengan hati dan pikiran yang bersih, serta mampu mewujudkan keluarga sakinah, mawaddah dan warahmah.',
+                image: 'Cerita.jpg',
+                alt: 'Sampul buku tentang aku dalam sebuah cerita'
+            }
+        };
+
+        function showBook(bookId) {
+            const book = books[bookId];
+            document.getElementById('book-content').innerHTML = `
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <img src="${book.image}" alt="${book.alt}" class="rounded-lg shadow-lg" onerror="this.style.display='none';" />
+                    </div>
+                    <div>
+                        <h1 class="text-4xl font-bold mb-4">${book.title}</h1>
+                        <p class="text-gray-600 mb-4">${book.author}</p>
+                        <p class="text-2xl font-bold text-green-600 mb-4">${book.price}</p>
+                        <p class="mb-6">${book.description}</p>
+                        <button onclick="alert('Buku dibeli!')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Beli Sekarang</button>
+                    </div>
+                </div>
+            `;
+            showPage('book-detail');
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
+</content>
+</create_file>
